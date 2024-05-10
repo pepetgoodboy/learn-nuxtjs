@@ -1,14 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
+  app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css",
+        },
+      ],
     },
   },
+  devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "@vite-pwa/nuxt"],
-
   tailwindcss: {
     cssPath: "~/assets/css/tailwind.css",
     configPath: "~/tailwind.config.ts",
@@ -16,8 +19,8 @@ export default defineNuxtConfig({
 
   pwa: {
     manifest: {
-      name: "Mamae Laundry",
-      short_name: "Mamae Laundry",
+      name: "Mamae",
+      short_name: "Mamae",
       theme_color: "#fff",
       display: "standalone",
       orientation: "portrait",
