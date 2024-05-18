@@ -1,10 +1,22 @@
 <script lang="ts" setup>
+import type { Products } from "~/types/products";
+
 const props = defineProps({
   product: {
     type: Object,
     default: {},
   },
 });
+
+const addQuantity = () => {
+  props.product.quantity++;
+};
+
+const removeQuantity = () => {
+  if (props.product.quantity > 1) {
+    props.product.quantity--;
+  }
+};
 </script>
 
 <template>
@@ -19,16 +31,20 @@ const props = defineProps({
         <div
           class="flex items-center border border-gray-300 w-max rounded-full"
         >
+          <!-- Remove Quantity -->
           <button
             class="cursor-pointer py-1 pl-4 pr-2 text-lg flex items-center justify-center"
+            @click="removeQuantity"
           >
             -
           </button>
           <div class="py-1 px-2 text-lg flex items-center justify-center">
-            1
+            {{ props.product.quantity }}
           </div>
+          <!-- Add Quantity  -->
           <button
             class="cursor-pointer py-1 pl-2 pr-4 text-lg flex items-center justify-center"
+            @click="addQuantity"
           >
             +
           </button>

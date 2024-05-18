@@ -5,6 +5,7 @@ export default <Partial<Config>>{
     extend: {
       colors: {
         primary: "#6867C5",
+        primary1: "#4C5FD5",
       },
     },
     container: {

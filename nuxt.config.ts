@@ -19,8 +19,8 @@ export default defineNuxtConfig({
 
   pwa: {
     manifest: {
-      name: "Mamae",
-      short_name: "Mamae",
+      name: "Abstract",
+      short_name: "Abstract",
       theme_color: "#fff",
       display: "standalone",
       orientation: "portrait",

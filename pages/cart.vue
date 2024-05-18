@@ -5,7 +5,8 @@ const totalPrice = computed(() => {
   return products.value
     .filter((product) => product.price !== undefined)
     .reduce(
-      (accumulator, currentValue) => accumulator + currentValue.price!,
+      (accumulator, currentValue) =>
+        accumulator + currentValue.price! * currentValue.quantity!,
       0
     );
 });
@@ -13,6 +14,10 @@ const totalPrice = computed(() => {
 const removeCart = (id: number) => {
   products.value = products.value.filter((item) => item.id !== id);
   localStorage.setItem("products", JSON.stringify(products.value));
+};
+
+const prices = (price: number, quantity: number) => {
+  return price * quantity;
 };
 
 onMounted(() => {
@@ -53,7 +58,9 @@ onMounted(() => {
                 class="flex gap-4 items-center"
               >
                 <span class="text-limit limit-1 text-sm">{{ item.name }}</span>
-                <span class="text-sm font-semibold">{{ item.price }}</span>
+                <span class="text-sm font-semibold"
+                  >${{ prices(item.price!, item.quantity!) }}</span
+                >
               </div>
             </div>
             <div v-else>
